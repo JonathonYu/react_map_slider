@@ -8,14 +8,15 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = { 
-      zoom: 13 //placeholder, should propagate up value from map.js
+      zoom: 13, //placeholder, should propagate up value from map.js
+      lat: 37.239153 //likewise
     };
     this.handleZoomChange = this.handleZoomChange.bind(this);
   }
   
-  handleZoomChange(newZoom) {
-    this.setState({zoom: newZoom});
-    console.log(this.state.zoom);
+  handleZoomChange(newZoom, newLat) {
+    this.setState({zoom: newZoom, lng: newLat});
+    console.log(this.state.zoom, this.state.lat);
   }
   
   render() {
@@ -27,7 +28,7 @@ class App extends Component {
         <div className="flexbox">
             <GMap onZoomChange={this.handleZoomChange}/>
         </div>
-        <Slider/>
+        <Slider zoom={this.state.zoom} lat={this.state.lat}/>
       </div>
     );
   }

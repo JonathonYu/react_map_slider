@@ -5,18 +5,18 @@ import './App.css';
 
 class App extends Component {
   
-  // constructor(props) {
-  //   super(props);
-  //   this.state = { 
-  //     width: '0', 
-  //     height: '0' 
-  //   };
-  //   this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
-  // }
+  constructor(props) {
+    super(props);
+    this.state = { 
+      zoom: 13 //placeholder, should propagate up value from map.js
+    };
+    this.handleZoomChange = this.handleZoomChange.bind(this);
+  }
   
-  //header doesn't even show :()
-  
-
+  handleZoomChange(newZoom) {
+    this.setState({zoom: newZoom});
+    console.log(this.state.zoom);
+  }
   
   render() {
     return (
@@ -25,7 +25,7 @@ class App extends Component {
           <h3 className="App-title">Map Demo</h3>
         </header>
         <div className="flexbox">
-            <GMap/>
+            <GMap onZoomChange={this.handleZoomChange}/>
         </div>
         <Slider/>
       </div>

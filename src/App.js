@@ -8,8 +8,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = { 
-      zoom: 13, //placeholder, should propagate up value from map.js
-      lat: 37.239153, //likewise
+      zoom: 13, //magic numbers only b/c hardcoded default starting location
+      lat: 37.239153, //in prod. could raise up to another wrapping component, create static getters, pass in via props
       diag: 0
     };
     this.handleZoomChange = this.handleZoomChange.bind(this);

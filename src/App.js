@@ -12,11 +12,17 @@ class App extends Component {
       lat: 37.239153 //likewise
     };
     this.handleZoomChange = this.handleZoomChange.bind(this);
+    this.initZoomChange = this.initZoomChange.bind(this);
   }
   
   handleZoomChange(newZoom, newLat) {
     this.setState({zoom: newZoom, lng: newLat});
     console.log(this.state.zoom, this.state.lat);
+  }
+  
+  initZoomChange(newZoom) {
+    this.setState({zoom: newZoom});
+    
   }
   
   render() {
@@ -26,9 +32,10 @@ class App extends Component {
           <h3 className="App-title">Map Demo</h3>
         </header>
         <div className="flexbox">
-            <GMap onZoomChange={this.handleZoomChange}/>
+            <GMap onZoomChange={this.handleZoomChange} zoom={this.state.zoom}/>
         </div>
-        <Slider zoom={this.state.zoom} lat={this.state.lat}/>
+        <Slider zoom={this.state.zoom} lat={this.state.lat} 
+        onZoomChange={this.initZoomChange}/>
       </div>
     );
   }

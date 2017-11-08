@@ -15,7 +15,8 @@ export default class Slider extends Component {
     let metersPerPixel =  156543.03392 * Math.cos(lat * Math.PI / 180) / Math.pow(2, zoom); //Mercator scalar
     console.log(metersPerPixel);
     let km = metersPerPixel * this.props.diag / 1000;
-    return Math.round(km);
+    let kmToMiles = 0.621371;
+    return Math.round(km * kmToMiles);
   }
   
   changeZoom = (e) => {
@@ -30,7 +31,7 @@ export default class Slider extends Component {
     return (
       <div className="slider">
         <div className="distance">
-          <h1>{this.zoomToDistance(this.props.zoom, this.props.lat)}km</h1>
+          <h1>{this.zoomToDistance(this.props.zoom, this.props.lat)}mi</h1>
         </div>
         <div className="slider-input">
           <input type='range' value={this.props.zoom} 

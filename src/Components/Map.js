@@ -21,7 +21,6 @@ export default class GMap extends Component {
   
   //inline style per flexbox workaround in google-map-react docs
   render() {
-    console.log(this.mapOptions);
     return (
       <GoogleMap
         style={{flex: 1}}

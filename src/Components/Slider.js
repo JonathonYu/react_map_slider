@@ -15,7 +15,7 @@ export default class Slider extends Component {
     console.log("slider zoom ", zoom, "slider lat ", lat);
     let metersPerPixel =  156543.03392 * Math.cos(lat * Math.PI / 180) / Math.pow(2, zoom); //Mercator scalar
     console.log(metersPerPixel);
-    let km = metersPerPixel * 1920 /*TODO: viewportDiag*/ / 1000;
+    let km = metersPerPixel * this.props.diag /*TODO: viewportDiag*/ / 1000;
     return Math.round(km); //TODO: want 2 decimal precision but js decimal rounding is weird
   }
   

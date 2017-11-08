@@ -2,19 +2,14 @@ import React, { Component } from 'react';
 import GoogleMap from 'google-map-react';
 
 export default class GMap extends Component {
-  //proptypes and constructor?
   
   static defaultProps = {
     location: [37.239153, -115.814127],
-    // zoom: 13,
     key: 'AIzaSyB16KYftwWdZlEHhZoBbc6CprxUhABSv6E'
   };
   
   constructor(props) {
     super(props);
-    // this.state = {
-    //   zoom: this.props.zoom
-    // };
     this.onMapChange = this.onMapChange.bind(this);
     console.log(this.props);
   }

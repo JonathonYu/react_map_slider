@@ -9,10 +9,30 @@ class App extends Component {
     super(props);
     this.state = { 
       zoom: 13, //placeholder, should propagate up value from map.js
-      lat: 37.239153 //likewise
+      lat: 37.239153, //likewise
+      diag: 0
     };
     this.handleZoomChange = this.handleZoomChange.bind(this);
     this.initZoomChange = this.initZoomChange.bind(this);
+    this.updateDiag = this.updateDiag.bind(this);
+  }
+  
+  componentDidMount() {
+    this.updateDiag();
+    window.addEventListener('resize', this.updateDiag);
+  }
+  
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.updateDiag);
+  }
+  
+  updateDiag() {
+    this.setState({diag: this.pythagorean(window.innerWidth, window.innerHeight)});
+    console.log("diag: ", this.state.diag)
+  }
+  
+  pythagorean = (a, b) => {
+    return Math.sqrt(a*a + b*b);
   }
   
   handleZoomChange(newZoom, newLat) {
@@ -28,14 +48,11 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header"> 
-          <h3 className="App-title">Map Demo</h3>
-        </header>
         <div className="flexbox">
             <GMap onZoomChange={this.handleZoomChange} zoom={this.state.zoom}/>
         </div>
         <Slider zoom={this.state.zoom} lat={this.state.lat} 
-        onZoomChange={this.initZoomChange}/>
+        onZoomChange={this.initZoomChange} diag={this.state.diag}/>
       </div>
     );
   }

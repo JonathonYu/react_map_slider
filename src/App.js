@@ -28,7 +28,6 @@ class App extends Component {
   
   updateDiag() {
     this.setState({diag: this.pythagorean(window.innerWidth, window.innerHeight)});
-    console.log("diag: ", this.state.diag);
   }
   
   pythagorean = (a, b) => {
@@ -37,12 +36,10 @@ class App extends Component {
   
   handleZoomChange(newZoom, newLat) {
     this.setState({zoom: newZoom, lng: newLat});
-    console.log(this.state.zoom, this.state.lat);
   }
   
   initZoomChange(newZoom) {
     this.setState({zoom: newZoom});
-    console.log("slider zoomed to: ", newZoom);
   }
   
   render() {

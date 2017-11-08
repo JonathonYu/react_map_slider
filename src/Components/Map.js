@@ -11,11 +11,9 @@ export default class GMap extends Component {
   constructor(props) {
     super(props);
     this.onMapChange = this.onMapChange.bind(this);
-    console.log(this.props);
   }
   
   onMapChange = ({center, zoom, bounds, marginBounds}) => {
-    console.log("child zoom, ", zoom, "child lat, ", center.lat);
     this.props.onZoomChange(zoom, center.lat);
   }
   

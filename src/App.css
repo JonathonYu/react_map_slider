@@ -1,26 +1,17 @@
 .App {
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
 .App-header {
   position: static;
   background-color: #222;
   padding: 10px;
   color: white;
   text-align: center;
-  z-index: 1;
+  z-index: 10;
 }
 
 .App-title {
   font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
 }
 
 .flexbox {

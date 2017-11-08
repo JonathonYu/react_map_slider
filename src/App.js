@@ -22,7 +22,7 @@ class App extends Component {
   
   initZoomChange(newZoom) {
     this.setState({zoom: newZoom});
-    
+    console.log("slider zoomed to: ", newZoom);
   }
   
   render() {

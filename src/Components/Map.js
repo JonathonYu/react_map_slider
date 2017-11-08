@@ -14,7 +14,6 @@ export default class GMap extends Component {
     console.log(this.props);
   }
   
-  
   onMapChange = ({center, zoom, bounds, marginBounds}) => {
     console.log("child zoom, ", zoom, "child lat, ", center.lat);
     this.props.onZoomChange(zoom, center.lat);
@@ -22,12 +21,14 @@ export default class GMap extends Component {
   
   //inline style per flexbox workaround in google-map-react docs
   render() {
+    console.log(this.mapOptions);
     return (
       <GoogleMap
         style={{flex: 1}}
         bootstrapURLKeys={{key: this.props.key}}
         center = {this.props.location}
         zoom = {this.props.zoom}
+        options={{disableDefaultUI: true}}
         onChange ={this.onMapChange}>
       </GoogleMap>
     );

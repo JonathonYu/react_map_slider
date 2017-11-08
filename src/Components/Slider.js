@@ -4,8 +4,7 @@ export default class Slider extends Component {
   
   constructor(props) {
     super(props);
-    this.zoomToDistance = this.zoomToDistance.bind(this); //wanted an arrow function but weirdness with linter
-    //https://stackoverflow.com/questions/44080928/is-it-possible-to-use-arrow-functions-in-classes-with-es6
+    this.zoomToDistance = this.zoomToDistance.bind(this); //I know arrow functions normally bind this, but currently requires babel workaround and the like
     this.changeZoom = this.changeZoom.bind(this);
   }
   
@@ -15,8 +14,8 @@ export default class Slider extends Component {
     console.log("slider zoom ", zoom, "slider lat ", lat);
     let metersPerPixel =  156543.03392 * Math.cos(lat * Math.PI / 180) / Math.pow(2, zoom); //Mercator scalar
     console.log(metersPerPixel);
-    let km = metersPerPixel * this.props.diag /*TODO: viewportDiag*/ / 1000;
-    return Math.round(km); //TODO: want 2 decimal precision but js decimal rounding is weird
+    let km = metersPerPixel * this.props.diag / 1000;
+    return Math.round(km);
   }
   
   changeZoom = (e) => {
@@ -27,16 +26,16 @@ export default class Slider extends Component {
   
   render() {
     let maxZoom = 22;
-    let minZoom = 4; //placeholder default values (these are the normal max/mins rec'd for the api)
+    let minZoom = 4; //default values (these are the normal max/mins rec'd for the api)
     return (
       <div className="slider">
         <div className="distance">
           <h1>{this.zoomToDistance(this.props.zoom, this.props.lat)}km</h1>
         </div>
-        <div>
+        <div className="slider-input">
           <input type='range' value={this.props.zoom} 
           min={minZoom} max={maxZoom}
-          onChange={this.changeZoom}/>
+          onChange={this.changeZoom} />
         </div>
       </div>
     );

@@ -28,7 +28,7 @@ class App extends Component {
   
   updateDiag() {
     this.setState({diag: this.pythagorean(window.innerWidth, window.innerHeight)});
-    console.log("diag: ", this.state.diag)
+    console.log("diag: ", this.state.diag);
   }
   
   pythagorean = (a, b) => {

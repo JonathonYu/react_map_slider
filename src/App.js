@@ -47,7 +47,7 @@ class App extends Component {
   
   render() {
     return (
-      <div className="App">
+      <div>
         <div className="flexbox">
             <GMap onZoomChange={this.handleZoomChange} zoom={this.state.zoom}/>
         </div>
